@@ -16,10 +16,7 @@ public class conn {
 		}
 	}	
 	public static Connection getCon() throws SQLException{
-		if(conn==null) 
-		{
-			conn=DriverManager.getConnection(url,user,pwd);
-		}
+		conn=DriverManager.getConnection(url,user,pwd);
 		return conn;
 	}
 }

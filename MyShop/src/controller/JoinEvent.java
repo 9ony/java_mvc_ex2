@@ -11,7 +11,6 @@ import view.LoginPanel;
 public class JoinEvent implements ActionListener{
 	private LoginPanel loginUi;
 	private JoinPanel joinUi;
-	private BaseFrame base;
 	private Member member;
 	private MemberDAO mdao = new MemberDAO();
 	public JoinEvent(JoinPanel joinUi) {
@@ -31,7 +30,7 @@ public class JoinEvent implements ActionListener{
 		String pw = joinUi.getTf(1);
 		String name = joinUi.getTf(2);
 		String tel = joinUi.getTf(3);
-		if(id.isEmpty()||pw.isEmpty()||name.trim().isEmpty()||tel.isEmpty()) {
+		if(id.trim().isEmpty()||pw.trim().isEmpty()||name.trim().isEmpty()||tel.trim().isEmpty()) {
 			System.out.println("빠짐없이 입력해주세요");
 		}else {
 			if(tels(tel)[0]==null) {
@@ -45,6 +44,7 @@ public class JoinEvent implements ActionListener{
 			int n = mdao.Memberinsert(member);
 			if(n>0) {
 				System.out.println("가입완료!");
+				ChangeView.setView("LoginPanel", 400, 600);
 			}else {
 				System.out.println("가입실패!");
 			}
